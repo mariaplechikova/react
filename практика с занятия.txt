@@ -1,0 +1,140 @@
+npm run start
+
+Задание 1
+  import React, { useState } from 'react';
+  import ReactDOM from 'react-dom/client';
+
+  const divRoot = document.getElementById('root')
+  const root = ReactDOM.createRoot(divRoot)
+  const initCount = 0
+
+  root.render(
+    <div>
+    <Counter count = "0" />
+    <Counter count = "100" />
+    <Counter count = "200" />
+    </div>
+  )
+
+  function Counter(props) {
+    console.log(props)
+    const [count, setCount] = useState(+props.count)
+
+    function Inc(i) {
+      setCount(count + i)
+    }
+
+    function Dec(i) {
+      setCount(count - i)
+    }
+
+    return (
+      <div>
+        <div>Значение {count}</div>
+        <button onClick={ () => Inc(1) }>+1</button>
+        <button onClick={ () => Dec(1) }>-1</button>
+        <button onClick={ () => Inc(2) }>+2</button>
+        <button onClick={ () => Dec(2) }>-2</button>
+      </div>
+    )
+  }
+
+Задание 2
+  import React, { useState } from 'react';
+  import ReactDOM from 'react-dom/client';
+
+  const divRoot = document.getElementById('root')
+  const root = ReactDOM.createRoot(divRoot)
+
+  root.render(
+    <div>
+      <HelloWorld name="nik" lang="en"/>
+      <HelloWorld name="ник" lang="ru"/>
+    </div>
+  )
+
+  function HelloWorld(props) {
+    props.name = "Petya"
+
+    if (props.lang === "en") {
+      return (
+        <div>Привет, {props.name}</div>
+      )
+    }
+    if (props.lang === "ru") {
+      return (
+        <div>Привет, {props.name}</div>
+      )
+    }
+  Ъ
+
+Задание 3 
+  Первый способ
+    function FavoriteList() {
+      const food = ['Пельмени', 'Окрошка', 'Паста', 'Пицца']
+
+      let newFoods = []
+      for (let i = 0; i < food.length; i++) {
+        newFoods.push(`<li>${food.[i]}</li>`)
+      }
+
+      console.log(newFoods)
+    }
+
+    FavoriteList()
+
+  Второй способ
+        function FavoriteList() {
+      const foods = ['Пельмени', 'Окрошка', 'Паста', 'Пицца']
+
+      let newFoods = []
+      for (let food of foods) {
+        newFoods.push(`<li>${food}</li>`)
+      }
+
+      console.log(newFoods)
+    }
+
+    FavoriteList()
+
+  Третий способ
+    // Метод массива: map
+    function FavoriteList() {
+      const foods = ['Пельмени', 'Окрошка', 'Паста', 'Пицца']
+
+      let newFoods = foods.map(function(food) {
+        return `<li>${food}</li>`
+      })
+
+      console.log(newFoods)
+    }
+
+    FavoriteList()
+
+  Четвертый способ с реакт
+      import React, { useState } from 'react';
+      import ReactDOM from 'react-dom/client';
+
+      const divRoot = document.getElementById('root')
+      const root = ReactDOM.createRoot(divRoot)
+
+      root.render(
+        <div>
+          <FavoriyeList />
+        </div>
+      )
+
+      function FavoriyeList() {
+        const foods = [ 'Пельмени', 'Окрошка']
+
+        return (
+          <ul>
+            {foods.map(function (food) {
+              return (<li>{food}</li>)
+            })}
+          </ul>
+        )
+
+        
+      console.log(foods)
+      }
