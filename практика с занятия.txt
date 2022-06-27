@@ -138,3 +138,39 @@ npm run start
         
       console.log(foods)
       }
+
+
+Задание 4
+  import React, { useState } from 'react';
+  import ReactDOM from 'react-dom/client';
+
+  const divRoot = document.getElementById('root')
+  const root = ReactDOM.createRoot(divRoot)
+
+  root.render(
+    <div>
+      <FavoriyeList />
+    </div>
+  )
+
+  function FavoriyeList() {
+    const [foods, setFoods] = useState([ 'Пельмени', 'Окрошка'])
+
+    function addFood() {
+      const food = 'чипсы'
+      setFoods(foods.concat([food]))
+    }
+
+    return (
+      <div>
+      <ul>
+        {foods.map(function (food) {
+          return (<li>{food}</li>)
+        })}
+      </ul>
+      <button onClick={addFood}>Добавить продукт</button>
+      </div>
+      
+    )
+
+  }
